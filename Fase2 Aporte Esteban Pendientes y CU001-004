@@ -1,0 +1,155 @@
+# Fase 2 – Aporte de Esteban
+
+Contenido para insertar en el documento `Fase2_IEEE830_Requerimientos_Inventario_Bodega.md`. Cada bloque indica en qué sección va.
+
+---
+
+## PARTE A – Secciones pendientes
+
+### Insertar como sección 1.5 (después de 1.4 Referencias)
+
+### 1.5 Visión general del documento
+
+El documento se organiza en cinco secciones. La sección 1 presenta el propósito, el ámbito y las definiciones del SGIB. La sección 2 describe el contexto del producto: su perspectiva, sus funciones generales, los usuarios, las suposiciones y dependencias, y los requisitos futuros. La sección 3 contiene los requisitos específicos: los requerimientos funcionales (con su ficha IEEE 830 y su ficha de caso de uso), los no funcionales, las reglas de negocio, las restricciones, los criterios de aceptación y la matriz de trazabilidad con las historias de usuario de la Fase 1. La sección 4 reúne los apéndices y la sección 5 el índice de tablas y figuras.
+
+---
+
+### Insertar como secciones 2.4 y 2.5 (después de 2.3 Características de los usuarios)
+
+### 2.4 Suposiciones y dependencias
+
+**Suposiciones**
+
+- Cada sucursal cuenta con al menos un dispositivo (computador o celular Android) con acceso a red local o internet durante el horario de operación.
+- Los usuarios tienen conocimientos básicos de manejo de computador o celular; no se requiere experiencia técnica previa.
+- Cada sucursal tiene un encargado de bodega asignado que gestiona su propio inventario y sus propias categorías.
+- El administrador es quien crea las sucursales y los usuarios antes de que el resto de roles puedan operar.
+- El catálogo de productos y proveedores es único para la empresa, mientras que las existencias son propias de cada sucursal.
+
+**Dependencias**
+
+- El motor de base de datos MySQL debe estar confirmado por el instructor (ver RC-001); un cambio de motor obliga a revisar RNF-006 (transacciones atómicas) y el script de la Fase 4.
+- El lenguaje y el framework del backend están pendientes de definir por el grupo; la definición puede afectar RNF-001, RNF-007 y RNF-008.
+- El envío de enlaces de restablecimiento de contraseña (RF-002 A1) depende de que exista un servicio de correo disponible.
+- La modelación de categorías por sucursal (RN-010) depende de la decisión del grupo sobre la clave de la tabla de categorías en la Fase 4.
+- Si la empresa cambia su organización (por ejemplo, más de un encargado por sucursal), deben revisarse RN-004 y RN-008.
+
+### 2.5 Requisitos futuros
+
+Mejoras que no forman parte de esta versión y que podrían analizarse más adelante:
+
+- Facturación electrónica ante la entidad tributaria.
+- Integración con pasarelas de pago.
+- Traslados de inventario entre sucursales.
+- Lector de código de barras en la aplicación móvil.
+- Notificaciones push de alertas de stock mínimo.
+- Versión de la aplicación móvil para iOS.
+
+---
+
+### Reemplazar la sección 5 (Índice)
+
+## 5. Índice
+
+**Tablas**
+
+| N.° | Tabla | Sección |
+| --- | --- | --- |
+| 1 | Definiciones, acrónimos y abreviaturas | 1.3 |
+| 2 | Características de los usuarios | 2.3 |
+| 3 | Resumen de requerimientos funcionales | 3.1 |
+| 4 | Requerimientos no funcionales | 3.2 |
+| 5 | Reglas de negocio | 3.3 |
+| 6 | Restricciones | 3.4 |
+| 7 | Matriz de trazabilidad HU ↔ Requerimientos | 3.6 |
+| 8 | Resumen de casos de uso | 3.7 |
+
+**Figuras**
+
+| N.° | Figura | Sección |
+| --- | --- | --- |
+| 1 | Diagrama de casos de uso del SGIB (se elabora en la Fase 3) | 4 |
+
+---
+
+## PARTE B – Fichas de caso de uso (nueva sección 3.7)
+
+### Insertar como sección 3.7 (después de 3.6 Matriz de trazabilidad)
+
+### 3.7 Fichas de caso de uso
+
+Cada requerimiento funcional se complementa con una ficha de caso de uso. Los flujos detallados (Normal, Alternativos y Anormales) están en la ficha IEEE 830 del RF correspondiente, en la sección 3.1. El identificador del caso de uso usa el mismo número del RF (CU-001 corresponde a RF-001).
+
+**Resumen de casos de uso**
+
+| ID | Caso de uso | Tipo | RF | Actores |
+| --- | --- | --- | --- | --- |
+| CU-001 | Registrar usuario y asignar rol | Primario | RF-001 | Administrador |
+| CU-002 | Iniciar sesión | Primario | RF-002 | Administrador, Vendedor, Encargado de bodega |
+| CU-003 | Registrar sucursal | Primario | RF-003 | Administrador |
+| CU-004 | Registrar categoría | Secundario | RF-004 | Encargado de bodega |
+| CU-005 a CU-013 | *(a cargo de Julián y Cristian)* | | RF-005 a RF-013 | |
+
+---
+
+#### CU-001 – Registrar usuario y asignar rol
+
+| Campo | Contenido |
+| --- | --- |
+| **Caso de uso** | Registrar usuario y asignar rol |
+| **Identificador** | CU-001 |
+| **Actores** | Administrador |
+| **Tipo** | Primario |
+| **Referencias** | Requerimiento: RF-001. Historia de usuario: HU-01. Reglas: RN-004, RN-008. No funcionales: RNF-002. Casos de uso relacionados: CU-002 (el usuario creado inicia sesión), CU-003 (la sucursal debe existir para asignarla). |
+| **Precondición** | El administrador ha iniciado sesión (CU-002) y existe al menos una sucursal registrada (CU-003). |
+| **Postcondición** | El usuario queda registrado en estado "Activo" con su rol y sucursal asignados, con la contraseña almacenada cifrada, y habilitado para iniciar sesión con los permisos de su rol. |
+| **Descripción** | El administrador registra a una persona como usuario del sistema con sus datos personales, credenciales, un rol (Administrador, Vendedor o Encargado de bodega) y una sucursal. El sistema valida que el usuario y el correo no estén repetidos y que los campos obligatorios estén completos. También permite editar el rol de un usuario ya existente. |
+| **Resumen** | Alta de usuarios con rol y sucursal, ejecutada únicamente por el administrador. |
+
+---
+
+#### CU-002 – Iniciar sesión
+
+| Campo | Contenido |
+| --- | --- |
+| **Caso de uso** | Iniciar sesión |
+| **Identificador** | CU-002 |
+| **Actores** | Administrador, Vendedor, Encargado de bodega |
+| **Tipo** | Primario |
+| **Referencias** | Requerimiento: RF-002. Historia de usuario: HU-02. Reglas: RN-008, RN-009. No funcionales: RNF-001, RNF-002. Casos de uso relacionados: CU-001 (crea las cuentas que inician sesión). Todos los demás casos de uso lo requieren como precondición. |
+| **Precondición** | El usuario está registrado (CU-001) y su cuenta está activa y no bloqueada. |
+| **Postcondición** | Se crea una sesión activa asociada al rol y a la(s) sucursal(es) del usuario, se registra la fecha y hora del ingreso y el menú muestra solo las opciones de su rol. Si falla la autenticación, no se crea sesión. |
+| **Descripción** | El usuario ingresa su usuario y contraseña. El sistema valida las credenciales, comprueba que la cuenta esté activa y redirige al menú correspondiente a su rol. Tras 5 intentos fallidos consecutivos bloquea la cuenta durante 15 minutos (RN-009). El usuario puede solicitar un enlace para restablecer su contraseña. |
+| **Resumen** | Autenticación de usuarios y control de acceso según el rol. |
+
+---
+
+#### CU-003 – Registrar sucursal
+
+| Campo | Contenido |
+| --- | --- |
+| **Caso de uso** | Registrar sucursal |
+| **Identificador** | CU-003 |
+| **Actores** | Administrador |
+| **Tipo** | Primario (configuración previa indispensable para operar el MVP) |
+| **Referencias** | Requerimiento: RF-003. Historia de usuario: HU-03. Reglas: RN-004, RN-006, RN-008. No funcionales: RNF-005. Casos de uso relacionados: CU-001 (asigna usuarios a la sucursal), CU-004 (las categorías pertenecen a una sucursal), CU-007 y CU-008 (el inventario se maneja por sucursal). |
+| **Precondición** | El administrador ha iniciado sesión (CU-002). |
+| **Postcondición** | La sucursal queda registrada en estado "Activa" con su inventario independiente, disponible para asociar usuarios, categorías, existencias y ventas. |
+| **Descripción** | El administrador registra una sucursal con nombre, dirección, ciudad, teléfono y encargado. El sistema valida que el nombre no esté repetido y crea la sucursal junto con su inventario propio. El administrador también puede editarla e inactivarla. Una sucursal con inventario o usuarios asociados no puede eliminarse, solo inactivarse (RN-006). |
+| **Resumen** | Alta, edición e inactivación de sucursales con inventario independiente. |
+
+---
+
+#### CU-004 – Registrar categoría
+
+| Campo | Contenido |
+| --- | --- |
+| **Caso de uso** | Registrar categoría |
+| **Identificador** | CU-004 |
+| **Actores** | Encargado de bodega |
+| **Tipo** | Secundario |
+| **Referencias** | Requerimiento: RF-004. Historia de usuario: HU-04. Reglas: RN-006, RN-008, RN-010. Casos de uso relacionados: CU-003 (la sucursal debe existir), CU-006 (los productos se clasifican con una categoría). |
+| **Precondición** | El encargado ha iniciado sesión (CU-002) y tiene una sucursal asignada activa. |
+| **Postcondición** | La categoría queda registrada en su sucursal y disponible para clasificar productos. Si la operación falla, no se crea ningún registro. |
+| **Descripción** | El encargado registra una categoría con nombre y descripción dentro de su sucursal. El sistema valida que el nombre no esté repetido en esa sucursal (puede repetirse en otra, RN-010). El encargado también puede editar la categoría e inactivarla; una categoría con productos asociados no puede eliminarse (RN-006). |
+| **Resumen** | Gestión de las categorías de productos propias de cada sucursal. |
