@@ -1,0 +1,38 @@
+# Fase 5 — Mockup / Prototipo Navegable
+
+## Información del Proyecto
+- *Proyecto:* Sistema de Gestión de Inventario para Bodega
+- *Fase:* 5 — Mockup / Prototipo Navegable
+- *Ficha:* 3239188 - ADSO
+
+---
+
+## 🔗 Enlace al Prototipo Navegable
+Acceso en vivo al prototipo interactivo para validación de experiencia de usuario:
+
+👉 **[Abrir Prototipo Navegable](https://share.gemini.google/3lx39sSvK3hG)**
+
+> *Ejecución local:* Si descarga el repositorio, simplemente abra el archivo index.html en cualquier navegador web moderno (Google Chrome, Microsoft Edge, Mozilla Firefox) sin necesidad de configurar servidores locales.
+
+---
+
+## 📋 Matriz de Cumplimiento de Requerimientos
+
+| Requerimiento Evaluado | Estado | Implementación en la Interfaz |
+|---|:---:|---|
+| *1. Estructura de navegación* | Cumplido | Arquitectura SPA (Single Page Application) con menú lateral (sidebar) persistente, breadcrumbs y transiciones fluidas sin recargar página. |
+| *2. Pantalla de inicio* | Cumplido | Vista institucional independiente de bienvenida (Landing Page) con capacidad operativa, estado de andenes de carga y horarios de turno. |
+| *3. Login / Registro* | Cumplido | Acceso controlado con perfiles rápidos (Administrador y Auxiliar) más pestaña interactiva de solicitud de registro para colaboradores. |
+| *4. Dashboard* | Cumplido | Indicadores clave calculados en vivo: total de unidades, valorización monetaria en COP, productos en stock crítico y tabla de actividad reciente. |
+| *5. Formularios* | Cumplido | Formatos con asistencia en mayúsculas para SKU, máscaras automáticas de moneda en COP ($ 1.250.000) y validación de stock disponible. |
+| *6. Listados* | Cumplido | Tablas estructuradas para el Catálogo de Inventario y Kardex transaccional con badges semánticos de estado (Óptimo, Medio, Crítico). |
+| *7. Consultas* | Cumplido | Buscador de texto en tiempo real y panel de filtros avanzados multicriterio con rangos de fecha (Hoy, 7 días, Mes, Rango personalizado). |
+| *8. Detalle de registros* | Cumplido | Ventana modal emergente con ficha técnica del producto, ubicación física en bodega (pasillo, estante, nivel) y mini-tabla con el historial exclusivo de movimientos del SKU. |
+| *9. Mensajes de error y confirmación* | Cumplido | Validación contextual inline en formularios (bordes rojos y mensajes de ayuda), alertas flotantes Toast (éxito, advertencia, error) y modal de confirmación antes de eliminar. |
+| *10. Prototipo navegable* | Cumplido | Entorno completamente reactivo con simulación de transacciones en memoria que actualiza el inventario, dashboard y kardex de forma inmediata. |
+
+---
+
+## 👥 Credenciales de Prueba (Roles Simulados)
+- *Administrador:* Acceso completo a todas las métricas, registro de movimientos, edición y permisos para eliminar registros.
+- *Auxiliar Operativo:* Permisos restringidos a registro de entradas, salidas y consultas (eliminación física bloqueada).
