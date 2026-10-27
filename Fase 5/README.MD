@@ -12,7 +12,7 @@ El prototipo funcional se encuentra desplegado y listo para su validación inter
 
 👉 **[Ver Prototipo Navegable en Vivo] https://share.gemini.google/3lx39sSvK3hG**
 
-(Nota: Si descargan el repositorio de forma local, pueden abrir directamente el archivo index.html en cualquier navegador web).
+
 
 ---
 
